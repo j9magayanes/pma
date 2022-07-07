@@ -1,18 +1,18 @@
 import React, { useEffect, useContext } from "react";
-import RestaurantFinder from "../apis/RestaurantFinder";
-import { RestaurantsContext } from "../context/RestaurantsContext";
+import ModelFinder from "../apis/ModelFinder";
+import { ModelsContext } from "../context/ModelsContext";
 import { useHistory } from "react-router-dom";
 import StarRating from "./StarRating";
 
-const RestaurantList = (props) => {
-  const { restaurants, setRestaurants } = useContext(RestaurantsContext);
+const ModelList = (props) => {
+  const { models, setModels } = useContext(ModelsContext);
   let history = useHistory();
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await RestaurantFinder.get("/");
+        const response = await ModelFinder.get("/");
         console.log(response.data.data);
-        setRestaurants(response.data.data.restaurants);
+        setModels(response.data.data.models);
       } catch (err) {}
     };
 
@@ -22,10 +22,10 @@ const RestaurantList = (props) => {
   const handleDelete = async (e, id) => {
     e.stopPropagation();
     try {
-      const response = await RestaurantFinder.delete(`/${id}`);
-      setRestaurants(
-        restaurants.filter((restaurant) => {
-          return restaurant.id !== id;
+      const response = await ModelFinder.delete(`/${id}`);
+      setModels(
+        models.filter((model) => {
+          return model.id !== id;
         })
       );
     } catch (err) {
@@ -35,21 +35,21 @@ const RestaurantList = (props) => {
 
   const handleUpdate = (e, id) => {
     e.stopPropagation();
-    history.push(`/restaurants/${id}/update`);
+    history.push(`/models/${id}/update`);
   };
 
-  const handleRestaurantSelect = (id) => {
-    history.push(`/restaurants/${id}`);
+  const handleModelSelect = (id) => {
+    history.push(`/models/${id}`);
   };
 
-  const renderRating = (restaurant) => {
-    if (!restaurant.count) {
+  const renderRating = (model) => {
+    if (!model.count) {
       return <span className="text-warning">0 reviews</span>;
     }
     return (
       <>
-        <StarRating rating={restaurant.id} />
-        <span className="text-warning ml-1">({restaurant.count})</span>
+        <StarRating rating={model.id} />
+        <span className="text-warning ml-1">({model.count})</span>
       </>
     );
   };
@@ -59,7 +59,7 @@ const RestaurantList = (props) => {
       <table className="table table-hover table-dark">
         <thead>
           <tr className="bg-primary">
-            <th scope="col">Restaurant</th>
+            <th scope="col">Model</th>
             <th scope="col">Location</th>
             <th scope="col">Price Range</th>
             <th scope="col">Ratings</th>
@@ -68,20 +68,20 @@ const RestaurantList = (props) => {
           </tr>
         </thead>
         <tbody>
-          {restaurants &&
-            restaurants.map((restaurant) => {
+          {models &&
+            models.map((model) => {
               return (
                 <tr
-                  onClick={() => handleRestaurantSelect(restaurant.id)}
-                  key={restaurant.id}
+                  onClick={() => handleModelSelect(model.id)}
+                  key={model.id}
                 >
-                  <td>{restaurant.name}</td>
-                  <td>{restaurant.location}</td>
-                  <td>{"$".repeat(restaurant.price_range)}</td>
-                  <td>{renderRating(restaurant)}</td>
+                  <td>{model.name}</td>
+                  <td>{model.location}</td>
+                  <td>{"$".repeat(model.price_range)}</td>
+                  <td>{renderRating(model)}</td>
                   <td>
                     <button
-                      onClick={(e) => handleUpdate(e, restaurant.id)}
+                      onClick={(e) => handleUpdate(e, model.id)}
                       className="btn btn-warning"
                     >
                       Update
@@ -89,7 +89,7 @@ const RestaurantList = (props) => {
                   </td>
                   <td>
                     <button
-                      onClick={(e) => handleDelete(e, restaurant.id)}
+                      onClick={(e) => handleDelete(e, model.id)}
                       className="btn btn-danger"
                     >
                       Delete
@@ -129,4 +129,4 @@ const RestaurantList = (props) => {
   );
 };
 
-export default RestaurantList;
+export default ModelList;

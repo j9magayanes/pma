@@ -1,24 +1,24 @@
 import React, { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { RestaurantsContext } from "../context/RestaurantsContext";
-import RestaurantFinder from "../apis/RestaurantFinder";
+import { ModelsContext } from "../context/ModelsContext";
+import ModelFinder from "../apis/ModelFinder";
 import StarRating from "../components/StarRating";
 import Reviews from "../components/Reviews";
 import AddReview from "../components/AddReview";
 
-const RestaurantDetailPage = () => {
+const ModelDetailPage = () => {
   const { id } = useParams();
-  const { selectedRestaurant, setSelectedRestaurant } = useContext(
-    RestaurantsContext
+  const { selectedModel, setSelectedModel } = useContext(
+    ModelsContext
   );
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await RestaurantFinder.get(`/${id}`);
+        const response = await ModelFinder.get(`/${id}`);
         console.log(response);
 
-        setSelectedRestaurant(response.data.data);
+        setSelectedModel(response.data.data);
       } catch (err) {
         console.log(err);
       }
@@ -28,21 +28,21 @@ const RestaurantDetailPage = () => {
   }, []);
   return (
     <div>
-      {selectedRestaurant && (
+      {selectedModel && (
         <>
           <h1 className="text-center display-1">
-            {selectedRestaurant.restaurant.name}
+            {selectedModel.model.name}
           </h1>
           <div className="text-center">
-            <StarRating rating={selectedRestaurant.restaurant.average_rating} />
+            <StarRating rating={selectedModel.model.average_rating} />
             <span className="text-warning ml-1">
-              {selectedRestaurant.restaurant.count
-                ? `(${selectedRestaurant.restaurant.count})`
+              {selectedModel.model.count
+                ? `(${selectedModel.model.count})`
                 : "(0)"}
             </span>
           </div>
           <div className="mt-3">
-            <Reviews reviews={selectedRestaurant.reviews} />
+            <Reviews reviews={selectedModel.reviews} />
           </div>
           <AddReview />
         </>
@@ -51,4 +51,4 @@ const RestaurantDetailPage = () => {
   );
 };
 
-export default RestaurantDetailPage;
+export default ModelDetailPage;

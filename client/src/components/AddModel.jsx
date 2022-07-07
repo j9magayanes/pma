@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
-import RestaurantFinder from "../apis/RestaurantFinder";
-import { RestaurantsContext } from "../context/RestaurantsContext";
+import ModelFinder from "../apis/ModelFinder";
+import { ModelsContext } from "../context/ModelsContext";
 
-const AddRestaurant = () => {
-  const { addRestaurants } = useContext(RestaurantsContext);
+const AddModel = () => {
+  const { addModels } = useContext(ModelsContext);
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [priceRange, setPriceRange] = useState("Price Range");
@@ -11,13 +11,13 @@ const AddRestaurant = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await RestaurantFinder.post("/", {
+      const response = await ModelFinder.post("/", {
         name,
         location,
         price_range: priceRange,
       });
       console.log(response.data.data);
-      addRestaurants(response.data.data.restaurant);
+      addModels(response.data.data.model);
     } catch (err) {
       console.log(err);
     }
@@ -71,4 +71,4 @@ const AddRestaurant = () => {
   );
 };
 
-export default AddRestaurant;
+export default AddModel;

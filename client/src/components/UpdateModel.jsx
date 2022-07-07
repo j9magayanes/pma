@@ -1,23 +1,23 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
-import { RestaurantsContext } from "../context/RestaurantsContext";
-import RestaurantFinder from "../apis/RestaurantFinder";
+import { ModelsContext } from "../context/ModelsContext";
+import ModelFinder from "../apis/ModelFinder";
 
-const UpdateRestaurant = (props) => {
+const UpdateModel = (props) => {
   const { id } = useParams();
   let history = useHistory();
-  const { restaurants } = useContext(RestaurantsContext);
+  const { models } = useContext(ModelsContext);
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [priceRange, setPriceRange] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await RestaurantFinder.get(`/${id}`);
+      const response = await ModelFinder.get(`/${id}`);
       console.log(response.data.data);
-      setName(response.data.data.restaurant.name);
-      setLocation(response.data.data.restaurant.location);
-      setPriceRange(response.data.data.restaurant.price_range);
+      setName(response.data.data.model.name);
+      setLocation(response.data.data.model.location);
+      setPriceRange(response.data.data.model.price_range);
     };
 
     fetchData();
@@ -25,7 +25,7 @@ const UpdateRestaurant = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const updatedRestaurant = await RestaurantFinder.put(`/${id}`, {
+    const updatedModel = await ModelFinder.put(`/${id}`, {
       name,
       location,
       price_range: priceRange,
@@ -79,4 +79,4 @@ const UpdateRestaurant = (props) => {
   );
 };
 
-export default UpdateRestaurant;
+export default UpdateModel;

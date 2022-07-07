@@ -1,6 +1,6 @@
 CREATE TABLE reviews (
     id BIGSERIAL NOT NULL PRIMARY KEY,
-    restaurant_id BIGINT NOT NULL REFERENCES restaurants(id),
+    model_id BIGINT NOT NULL REFERENCES models(id),
     name VARCHAR(50) NOT NULL,
     review TEXT NOT NULL,
     rating INT NOT NULL check(
@@ -9,11 +9,11 @@ CREATE TABLE reviews (
     )
 );
 select *
-from restaurants
+from model
     left join(
-        select restaurant_id,
+        select model_id,
             count(*),
             TRUNC(AVG(rating, 1)) as average_rating
         from reviews
-        group by restaurant_id
-    ) reviews on restaurants.id = reviews.restaurant_id;
+        group by model_id
+    ) reviews on models.id = reviews.model_id;

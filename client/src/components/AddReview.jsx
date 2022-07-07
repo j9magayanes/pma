@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import RestaurantFinder from "../apis/RestaurantFinder";
+import ModelFinder from "../apis/ModelFinder";
 import { useLocation, useParams, useHistory } from "react-router-dom";
 
 const AddReview = () => {
@@ -16,7 +16,7 @@ const AddReview = () => {
   const handleSubmitReview = async (e) => {
     e.preventDefault();
     try {
-      const response = await RestaurantFinder.post(`/${id}/addReview`, {
+      const response = await ModelFinder.post(`/${id}/addReview`, {
         name,
         review: reviewText,
         rating,
