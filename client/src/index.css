@@ -1,0 +1,37 @@
+.container {
+    margin: 1rem;
+    padding: 1rem;
+    font-family: 'Red Hat Text', sans-serif;
+}
+.logo-name{
+    padding-left: 2rem;
+    color: #E86066;
+}
+.header {
+    display: flex;
+}
+.header-right {
+    display: flex;
+    position:fixed; 
+    right:0;
+}
+.category {
+    padding: 1rem;
+}
+.table {
+    margin: 1rem;
+}
+.table-header{
+    background-color: #E86066;
+    color: white;
+}
+.table-data {
+    border: 1px solid rgb(187, 187, 187) 
+}
+.button {
+    background-color: #E86066; 
+    border-radius: .2rem;
+    border-color: #E86066;
+    box-shadow: #E86066;
+    color: white;
+}

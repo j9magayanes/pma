@@ -44,18 +44,6 @@ const sqlConfig = {
     trustServerCertificate: true// change to true for local dev / self-signed certs
   }
 }
-app.get("/", async () => {
-  try {
-   // make sure that any items are correctly URL encoded in the connection string
-   await sql.connect(sqlConfig)
-   const result = await sql.query`select * from models`
-   console.log(result)
-  } catch (err) {
-   console.log(err)
-  }
- }
-)
- 
 
 // Get all Models
 app.get("/api/v1/models", async (req, res) => {
@@ -84,20 +72,10 @@ app.get("/api/v1/models/:id", async (req, res) => {
     const model = await sql.query(
       `select * from models where id = ${req.params.id}`
     );
-
-    // select * from models wehre id = req.params.id
-
-    const reviews = await sql.query(
-      `select * from reviews where model_id = ${req.params.id}`,
-      [req.params.id]
-    );
-    console.log(reviews);
-
     res.status(200).json({
       status: "success",
       data: {
         model: model.recordset[0],
-        reviews: reviews.recordset,
       },
     });
   } catch (err) {
@@ -105,8 +83,7 @@ app.get("/api/v1/models/:id", async (req, res) => {
   }
 });
 
-// Create a mode
-
+// Create a model
 app.post("/api/v1/models", async (req, res) => {
   try {
    let pool = await sql.connect(sqlConfig)
@@ -116,76 +93,67 @@ app.post("/api/v1/models", async (req, res) => {
    .input('location', sql.NVarChar, req.body.location)
    .input('price_range', sql.Int, req.body.price_range)
    .query('INSERT INTO models (id, name, location, price_range) values (@id, @name, @location, @price_range)')
-  } catch (err) {
-   console.log(err)
-  }
- }
-)
-
+   res.status(200).json({
+    status: "success",
+    data: {
+      model: {id: 7},
+    },
+  });
+} catch (err) {
+  console.log(err);
+}
+});
 // Update Models
-
 app.put("/api/v1/models/:id", async (req, res) => {
   try {
-    const results = await sql.query(
-      "UPDATE models SET name = $1, location = $2, price_range = $3 where id = $4 returning *",
-      [req.body.name, req.body.location, req.body.price_range, req.params.id]
-    );
-
+    let pool = await sql.connect(sqlConfig)
+    const result = await pool.request()
+    .input('searchid', sql.Int, req.params.id)
+    .input('id', sql.Int, req.body.id)
+    .input('name', sql.NVarChar, req.body.name)
+    .input('location', sql.NVarChar, req.body.location)
+    .input('price_range', sql.Int, req.body.price_range)
+    .query('UPDATE models SET id = @id, name = @name, location = @location, price_range = @price_range where id = @searchid')
     res.status(200).json({
       status: "success",
-      data: {
-        model: results.recordset[0],
-      },
     });
-  } catch (err) {
-    console.log(err);
+   } catch (err) {
+    console.log(err)
+   }
   }
-  console.log(req.params.id);
-  console.log(req.body);
-});
+ )
 
 // Delete Model
-
 app.delete("/api/v1/models/:id", async (req, res) => {
   try {
-    const results = sql.query("DELETE FROM models where id = $1", [
-      req.params.id,
-    ]);
-    res.status(204).json({
+    let pool = await sql.connect(sqlConfig)
+    const result = await pool.request()
+    .input('searchid', sql.Int, req.params.id)
+    .input('id', sql.Int, req.body.id)
+    .input('name', sql.NVarChar, req.body.name)
+    .input('location', sql.NVarChar, req.body.location)
+    .input('price_range', sql.Int, req.body.price_range)
+    .query('DELETE FROM models where id = @searchid')
+    res.status(200).json({
       status: "success",
     });
-  } catch (err) {
-    console.log(err);
+   } catch (err) {
+    console.log(err)
+   }
   }
-});
+ )
 
-app.post("/api/v1/models/:id/addReview", async (req, res) => {
-  try {
-    const newReview = await sql.query(
-      "INSERT INTO reviews (model_id, name, review, rating) values ($1, $2, $3, $4) returning *;",
-      [req.params.id, req.body.name, req.body.review, req.body.rating]
-    );
-    console.log(newReview);
-    res.status(201).json({
-      status: "success",
-      data: {
-        review: newReview.recordset[0],
-      },
-    });
-  } catch (err) {
-    console.log(err);
-  }
-});
+
 
 // Sign up
-app.post("/api/v1/register", (req, res) => {
-  const name = req.body.name;
+/* app.post("/api/v1/register", (req, res) => {
+  const email = req.body.name;
   const password = req.body.password;
 
   try {
     const results = bcrypt.hash(password, saltRounds, (err, hash) => {
-      sql.query("INSERT INTO users (name, password) VALUES ($1, $2)", [
-        name,
+      sql.query("INSERT INTO emails (email, password) VALUES ($1, $2)", [
+        email,
         hash,
       ]);
       console.log(results);
@@ -196,16 +164,16 @@ app.post("/api/v1/register", (req, res) => {
   } catch (err) {
     console.log(err);
   }
-});
+}); */
 
 // Sign in
-app.post("/api/v1/login", async(req, res) => {
-  const name = req.body.name;
+/* app.post("/api/v1/login", async(req, res) => {
+  const name = req.body.email;
   const password = req.body.password;
 
   try { 
     const result = await sql.query(
-    "select * from users WHERE name = $1",
+    "select * from emails WHERE name = $1",
     [name]
     );
     if (result.recordset.length > 0) {
@@ -214,7 +182,7 @@ app.post("/api/v1/login", async(req, res) => {
           req.session.user = result;
           console.log(req.session.user);
         } else {
-          console.log("wrong pw");
+          console.log("wrong password");
         }
       });
     } else {
@@ -226,7 +194,7 @@ app.post("/api/v1/login", async(req, res) => {
   } catch (err) {
     console.log(err)
   }
-});
+}); */
 
 
 // Log out

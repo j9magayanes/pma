@@ -3,6 +3,7 @@ import ModelFinder from "../apis/ModelFinder";
 import { ModelsContext } from "../context/ModelsContext";
 import { useHistory } from "react-router-dom";
 import StarRating from "./StarRating";
+import '../index.css'
 
 const ModelList = (props) => {
   const { models, setModels } = useContext(ModelsContext);
@@ -17,7 +18,7 @@ const ModelList = (props) => {
     };
 
     fetchData();
-  }, []);
+  }, [models]);
 
   const handleDelete = async (e, id) => {
     e.stopPropagation();
@@ -56,13 +57,37 @@ const ModelList = (props) => {
 
   return (
     <div className="list-group">
-      <table className="table table-hover table-dark">
+      <table className="table table-hover">
         <thead>
-          <tr className="bg-primary">
-            <th scope="col">Model</th>
-            <th scope="col">Location</th>
-            <th scope="col">Price Range</th>
-            <th scope="col">Ratings</th>
+          <tr className="table-header">
+            <th scope="col">Preismodell</th>
+            <th scope="col">Honorar</th>
+            <th scope="col">Preiskategorie</th>
+            <th scope="col">Online</th>
+            <th scope="col">Druck</th>
+            <th scope="col">Foto Autrag</th>
+            <th scope="col">TV Preis</th>
+            <th scope="col">Standzeit in Tager</th>
+            <th scope="col">Preis</th>
+            <th scope="col">Mobile/TV</th>
+            <th scope="col">Autor sichtbar</th>
+            <th scope="col">Währung</th>
+            <th scope="col">TV- Standzeit</th>
+            <th scope="col">Objektname</th>
+            <th scope="col">Uberschrift</th>
+            <th scope="col">Bildrechte</th>
+            <th scope="col">Quelle</th>
+            <th scope="col">Name des Autors</th>
+            <th scope="col">Autor</th>
+            <th scope="col">Copyright Vermerk</th>
+            <th scope="col">Online Anfang</th>
+            <th scope="col">Rechtlich Vermerke</th>
+            <th scope="col">Ort</th>
+            <th scope="col">Land(Code)</th>
+            <th scope="col">Erstellungsdatum</th>
+            <th scope="col">Sperrvermerk</th>
+            <th scope="col">Besondere Hinweise</th>
+            <th scope="col">Besondere Vereinbarungen</th>
             <th scope="col">Edit</th>
             <th scope="col">Delete</th>
           </tr>
@@ -75,10 +100,36 @@ const ModelList = (props) => {
                   onClick={() => handleModelSelect(model.id)}
                   key={model.id}
                 >
-                  <td>{model.name}</td>
-                  <td>{model.location}</td>
-                  <td>{"$".repeat(model.price_range)}</td>
-                  <td>{renderRating(model)}</td>
+                  <td><h4 className="table-data">{model.name}</h4></td>
+                  <td><h4 className="table-data">{model.location}</h4></td>
+                  <td><h4 className="table-data">{model.name}</h4></td>
+                  <td><h4 className="table-data">{model.location}</h4></td> 
+                  <td><h4 className="table-data">{model.name}</h4></td>
+                  <td><h4 className="table-data">{model.location}</h4></td>
+                  <td><h4 className="table-data">{model.name}</h4></td>
+                  <td><h4 className="table-data">{model.location}</h4></td>
+                  <td><h4 className="table-data">{model.name}</h4></td>
+                  <td><h4 className="table-data">{model.location}</h4></td>
+                  <td><h4 className="table-data">{model.name}</h4></td>
+                  <td><h4 className="table-data">{model.location}</h4></td> 
+                  <td><h4 className="table-data">{model.name}</h4></td>
+                  <td><h4 className="table-data">{model.location}</h4></td>
+                  <td><h4 className="table-data">{model.name}</h4></td>
+                  <td><h4 className="table-data">{model.location}</h4></td> 
+                  <td><h4 className="table-data">{model.name}</h4></td>
+                  <td><h4 className="table-data">{model.location}</h4></td>
+                  <td><h4 className="table-data">{model.name}</h4></td>
+                  <td><h4 className="table-data">{model.location}</h4></td> 
+                  <td><h4 className="table-data">{model.name}</h4></td>
+                  <td><h4 className="table-data">{model.location}</h4></td>
+                  <td><h4 className="table-data">{model.name}</h4></td>
+                  <td><h4 className="table-data">{model.location}</h4></td> 
+                  <td><h4 className="table-data">{model.name}</h4></td>
+                  <td><h4 className="table-data">{model.location}</h4></td>
+                  <td><h4 className="table-data">{model.name}</h4></td>
+                  <td><h4 className="table-data">{model.location}</h4></td>   
+                 {/*  <td>{"$".repeat(model.price_range)}</td>
+                  <td>{renderRating(model)}</td> */}
                   <td>
                     <button
                       onClick={(e) => handleUpdate(e, model.id)}

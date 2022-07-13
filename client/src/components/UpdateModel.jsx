@@ -7,6 +7,7 @@ const UpdateModel = (props) => {
   const { id } = useParams();
   let history = useHistory();
   const { models } = useContext(ModelsContext);
+  const [newId, setNewId] = useState("");
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [priceRange, setPriceRange] = useState("");
@@ -15,6 +16,7 @@ const UpdateModel = (props) => {
     const fetchData = async () => {
       const response = await ModelFinder.get(`/${id}`);
       console.log(response.data.data);
+      setNewId(response.data.data.model.newId);
       setName(response.data.data.model.name);
       setLocation(response.data.data.model.location);
       setPriceRange(response.data.data.model.price_range);
@@ -26,6 +28,7 @@ const UpdateModel = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const updatedModel = await ModelFinder.put(`/${id}`, {
+      id,
       name,
       location,
       price_range: priceRange,
@@ -36,6 +39,7 @@ const UpdateModel = (props) => {
   return (
     <div>
       <form action="">
+
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <input
@@ -45,8 +49,7 @@ const UpdateModel = (props) => {
             className="form-control"
             type="text"
           />
-        </div>
-
+        </div> 
         <div className="form-group">
           <label htmlFor="location">Location</label>
           <input

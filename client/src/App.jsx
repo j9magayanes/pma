@@ -4,6 +4,7 @@ import Home from "./routes/Home";
 import UpdatePage from "./routes/UpdatePage";
 import ModelDetailPage from "./routes/ModelDetailPage";
 import { ModelsContextProvider } from "./context/ModelsContext";
+import './index.css'
 const App = () => {
   return (
     <ModelsContextProvider>
@@ -20,6 +21,16 @@ const App = () => {
               exact
               path="/models/:id"
               component={ModelDetailPage}
+            />
+            <Route
+              exact
+              path="/login"
+              component={Login}
+            />
+                <Route
+              exact
+              path="/register"
+              component={Register}
             />
           </Switch>
         </Router>

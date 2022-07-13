@@ -1,9 +1,11 @@
 import React, { useState, useContext } from "react";
 import ModelFinder from "../apis/ModelFinder";
-import { ModelsContext } from "../context/ModelsContext";
+import { ModelsContext } from "../context/ModelsContext"
+import '../index.css'
 
 const AddModel = () => {
   const { addModels } = useContext(ModelsContext);
+  const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [priceRange, setPriceRange] = useState("Price Range");
@@ -12,6 +14,7 @@ const AddModel = () => {
     e.preventDefault();
     try {
       const response = await ModelFinder.post("/", {
+        id,
         name,
         location,
         price_range: priceRange,
@@ -26,6 +29,15 @@ const AddModel = () => {
     <div className="mb-4">
       <form action="">
         <div className="form-row">
+        <div className="col">
+            <input
+              value={id}
+              onChange={(e) => setId(e.target.value)}
+              type="text"
+              className="form-control"
+              placeholder="id"
+            />
+          </div>
           <div className="col">
             <input
               value={name}
@@ -61,7 +73,7 @@ const AddModel = () => {
           <button
             onClick={handleSubmit}
             type="submit"
-            className="btn btn-primary"
+            className="button"
           >
             Add
           </button>

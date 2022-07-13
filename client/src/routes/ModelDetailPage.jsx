@@ -42,7 +42,7 @@ const ModelDetailPage = () => {
             </span>
           </div>
           <div className="mt-3">
-            <Reviews reviews={selectedModel.reviews} />
+       
           </div>
           <AddReview />
         </>
