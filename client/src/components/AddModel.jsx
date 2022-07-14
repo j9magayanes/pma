@@ -3,6 +3,7 @@ import ModelFinder from "../apis/ModelFinder";
 import Header from "../components/Header";
 import { ModelsContext } from "../context/ModelsContext"
 import '../index.css'
+import ModelList from "./ModelList";
 
 const AddModel = () => {
   const { addModels } = useContext(ModelsContext);
@@ -27,30 +28,38 @@ const AddModel = () => {
     }
   };
   return (
-    <>
+    <div>
     <Header/>
-    <div className="mb-4">
+    <div className="add">
       <form action="">
-        <div className="form-row">
-        <div className="col">
-            <input
+        <div className="container">
+        <h1 className="title">New Model:</h1>
+        <div className="form">
+          <div className="row">
+            <div className="col-lg">
+            <label htmlFor="name">Name</label>
+              <input
               value={id}
               onChange={(e) => setId(e.target.value)}
               type="text"
               className="form-control"
               placeholder="id"
             />
-          </div>
-          <div className="col">
-            <input
+            </div>
+            <div className="col-lg" >
+            <label htmlFor="name">Name</label>
+              <input
               value={name}
               onChange={(e) => setName(e.target.value)}
               type="text"
               className="form-control"
               placeholder="name"
-            />
-          </div>
-          <div className="col">
+              />
+            </div>
+        </div>
+        <div className="row">
+          <div className="col-sm">
+          <label htmlFor="name">Name</label>
             <input
               value={location}
               onChange={(e) => setLocation(e.target.value)}
@@ -59,11 +68,166 @@ const AddModel = () => {
               placeholder="location"
             />
           </div>
-          <div className="col">
+          <div className="col-sm">
+          <label htmlFor="name">Name</label>
+            <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="form-control"
+              type="text"
+              placeholder="location"
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-sm">
+          <label htmlFor="name">Name</label>
+            <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="form-control"
+              type="text"
+              placeholder="location"
+            />
+          </div>
+          <div className="col-sm">
+          <label htmlFor="name">Name</label>
+            <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="form-control"
+              type="text"
+              placeholder="location"
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-sm">
+          <label htmlFor="name">Name</label>
+            <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="form-control"
+              type="text"
+              placeholder="location"
+            />
+          </div>
+          <div className="col-sm">
+          <label htmlFor="name">Name</label>
+            <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="form-control"
+              type="text"
+              placeholder="location"
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-sm">
+          <label htmlFor="name">Name</label>
+            <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="form-control"
+              type="text"
+              placeholder="location"
+            />
+          </div>
+          <div className="col-sm">
+          <label htmlFor="name">Name</label>
+            <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="form-control"
+              type="text"
+              placeholder="location"
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-sm">
+          <label htmlFor="name">Name</label>
+            <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="form-control"
+              type="text"
+              placeholder="location"
+            />
+          </div>
+          <div className="col-sm">
+          <label htmlFor="name">Name</label>
+            <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="form-control"
+              type="text"
+              placeholder="location"
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-sm">
+          <label htmlFor="name">Name</label>
+            <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="form-control"
+              type="text"
+              placeholder="location"
+            />
+          </div>
+          <div className="col-sm">
+          <label htmlFor="name">Name</label>
+            <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="form-control"
+              type="text"
+              placeholder="location"
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-sm">
+          <label htmlFor="name">Name</label>
+            <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="form-control"
+              type="text"
+              placeholder="location"
+            />
+          </div>
+          <div className="col-sm">
+          <label htmlFor="name">Name</label>
+            <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="form-control"
+              type="text"
+              placeholder="location"
+            />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-sm">
+          <label htmlFor="name">Name</label>
+            <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              className="form-control"
+              type="text"
+              placeholder="location"
+            />
+          </div>
+          <div className="col-sm">
+          <label htmlFor="name">Name</label>
             <select
               value={priceRange}
               onChange={(e) => setPriceRange(e.target.value)}
-              className="custom-select my-1 mr-sm-2"
+              className="custom-select my-1 mr-sm-2 add-form"
             >
               <option disabled>Price Range</option>
               <option value="1">$</option>
@@ -73,17 +237,22 @@ const AddModel = () => {
               <option value="5">$$$$$</option>
             </select>
           </div>
-          <button
+        </div>
+
+        <div className="add-button">
+            <button
             onClick={handleSubmit}
             type="submit"
             className="button"
-          >
+            >
             Add
-          </button>
+            </button>
         </div>
+      </div>
+      </div>
       </form>
     </div>
-    </>
+    </div>
   );
 };
 

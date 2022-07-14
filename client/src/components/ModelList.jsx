@@ -3,7 +3,7 @@ import ModelFinder from "../apis/ModelFinder";
 import { ModelsContext } from "../context/ModelsContext";
 import { useHistory } from "react-router-dom";
 import StarRating from "./StarRating";
-import '../index.css'
+import '../index.css';
 
 const ModelList = (props) => {
   const { models, setModels } = useContext(ModelsContext);
@@ -40,7 +40,7 @@ const ModelList = (props) => {
   };
 
   const handleModelSelect = (id) => {
-    history.push(`/models/${id}`);
+    history.push(`/models/${id}/update`);
   };
 
   const renderRating = (model) => {

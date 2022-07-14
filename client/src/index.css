@@ -3,6 +3,9 @@
     padding: 1rem;
     font-family: 'Red Hat Text', sans-serif;
 }
+.search-form{
+    margin: 1rem;
+}
 .logo-name{
     padding-left: 2rem;
     color: #E86066;
@@ -26,12 +29,69 @@
     color: white;
 }
 .table-data {
-    border: 1px solid rgb(187, 187, 187) 
+    border: 1px solid rgb(187, 187, 187);
+    font-size: 1rem;
+}
+.button-login {
+    margin-top: 1rem;
 }
 .button {
     background-color: #E86066; 
-    border-radius: .2rem;
-    border-color: #E86066;
+    border-radius: .4rem;
+    border-color: #e8606700;
     box-shadow: #E86066;
     color: white;
+    height: 3rem;
+    width: 8rem;
+}
+.title {
+    margin-left: 20rem;
+}
+.label {
+    font-weight: 500;
+}
+.login {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 50rem;
+}
+.container {
+    width: 600rem;
+    margin: 2rem
+}
+.add {
+    width: 400rem;
+}
+.col-sm {
+    margin-top: 1rem;
+}
+.search-bar {
+    margin-left: 1rem
+}
+.search-button {
+    height: 4rem;
+    background-color: #E86066;
+    display: flex;
+    align-items: center;
+    border-radius: 0 .4rem .4rem 0; 
+}
+.add-form{
+    height: 4rem;
+    width: 30rem;
+}
+.add-button {
+    margin-top: 2rem;
+}
+.form-control {
+    height: 4rem;
+    width: 30rem;
+}
+.form {
+    margin-left: 20rem;
+    width: 60rem;
+}
+.search {
+    display: flex;
 }

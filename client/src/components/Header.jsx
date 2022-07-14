@@ -13,9 +13,7 @@ const Header = () => {
       </h1>
     </div>
     <div className="header-right">
-    <div className="category">Search</div>
     <div className="category"><Link to="/add">Add</Link></div>
-    <div className="category">Delete</div>
     <div className="category"><Link to="/login">Login</Link></div>
     <div className="category"><Link to="/register">Register</Link></div>
     </div>

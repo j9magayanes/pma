@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { ModelsContext } from "../context/ModelsContext";
 import ModelFinder from "../apis/ModelFinder";
+import Header from "./Header";
+import '../index.css';
 
 const UpdateModel = (props) => {
   const { id } = useParams();
@@ -39,47 +41,222 @@ const UpdateModel = (props) => {
   return (
     <div>
       <form action="">
-
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            id="name"
-            className="form-control"
-            type="text"
-          />
-        </div> 
-        <div className="form-group">
-          <label htmlFor="location">Location</label>
-          <input
-            value={location}
-            onChange={(e) => setLocation(e.target.value)}
-            id="location"
-            className="form-control"
-            type="text"
-          />
+        <div className="container">
+        <h1 className="title">Update Model:</h1>
+        <div className="form">
+          <div className="row">
+            <div className="col-sm">
+             <label htmlFor="name">Name</label>
+              <input
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              id="name"
+              className="form-control"
+              type="text"
+              />
+            </div> 
+            <div className="col-sm">
+            <label htmlFor="name">Name</label>
+              <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              id="location"
+              className="form-control"
+              type="text"
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm">
+            <label htmlFor="name">Name</label>
+              <input
+              value={priceRange}
+              onChange={(e) => setPriceRange(e.target.value)}
+              id="price_range"
+              className="form-control"
+              type="number"
+              />
+            </div>
+            <div className="col-sm">
+            <label htmlFor="name">Name</label>
+              <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              id="location"
+              className="form-control"
+              type="text"
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm">
+            <label htmlFor="name">Name</label>
+              <input
+              value={priceRange}
+              onChange={(e) => setPriceRange(e.target.value)}
+              id="price_range"
+              className="form-control"
+              type="number"
+              />
+            </div>
+            <div className="col-sm">
+            <label htmlFor="name">Name</label>
+              <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              id="location"
+              className="form-control"
+              type="text"
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm">
+            <label htmlFor="name">Name</label>
+              <input
+              value={priceRange}
+              onChange={(e) => setPriceRange(e.target.value)}
+              id="price_range"
+              className="form-control"
+              type="number"
+              />
+            </div>
+            <div className="col-sm">
+            <label htmlFor="name">Name</label>
+              <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              id="location"
+              className="form-control"
+              type="text"
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm">
+            <label htmlFor="name">Name</label>
+              <input
+              value={priceRange}
+              onChange={(e) => setPriceRange(e.target.value)}
+              id="price_range"
+              className="form-control"
+              type="number"
+              />
+            </div>
+            <div className="col-sm">
+            <label htmlFor="name">Name</label>
+              <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              id="location"
+              className="form-control"
+              type="text"
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm">
+            <label htmlFor="name">Name</label>
+              <input
+              value={priceRange}
+              onChange={(e) => setPriceRange(e.target.value)}
+              id="price_range"
+              className="form-control"
+              type="number"
+              />
+            </div>
+            <div className="col-sm">
+            <label htmlFor="name">Name</label>
+              <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              id="location"
+              className="form-control"
+              type="text"
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm">
+            <label htmlFor="name">Name</label>
+              <input
+              value={priceRange}
+              onChange={(e) => setPriceRange(e.target.value)}
+              id="price_range"
+              className="form-control"
+              type="number"
+              />
+            </div>
+            <div className="col-sm">
+            <label htmlFor="name">Name</label>
+              <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              id="location"
+              className="form-control"
+              type="text"
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm">
+            <label htmlFor="name">Name</label>
+              <input
+              value={priceRange}
+              onChange={(e) => setPriceRange(e.target.value)}
+              id="price_range"
+              className="form-control"
+              type="number"
+              />
+            </div>
+            <div className="col-sm">
+            <label htmlFor="name">Name</label>
+              <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              id="location"
+              className="form-control"
+              type="text"
+              />
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-sm">
+            <label htmlFor="name">Name</label>
+              <input
+              value={priceRange}
+              onChange={(e) => setPriceRange(e.target.value)}
+              id="price_range"
+              className="form-control"
+              type="number"
+              />
+            </div>
+            <div className="col-sm">
+            <label htmlFor="name">Name</label>
+              <input
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              id="location"
+              className="form-control"
+              type="text"
+              />
+            </div>
+          </div>
+          <div className="add-button">
+            <button
+            type="submit"
+            onClick={handleSubmit}
+            className="button"
+            >
+            Submit
+            </button>
+            </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="price_range">Price Range</label>
-          <input
-            value={priceRange}
-            onChange={(e) => setPriceRange(e.target.value)}
-            id="price_range"
-            className="form-control"
-            type="number"
-          />
-        </div>
-        <button
-          type="submit"
-          onClick={handleSubmit}
-          className="btn btn-primary"
-        >
-          Submit
-        </button>
-      </form>
+        </div>        
+     
+        </form>
     </div>
-  );
+      );
 };
 
 export default UpdateModel;

@@ -1,10 +1,12 @@
 import React from "react";
+import Header from "../components/Header";
 import UpdateModel from "../components/UpdateModel";
 
 const UpdatePage = () => {
   return (
     <div>
-      <h1 className="text-center">Update Model</h1>
+      <Header/>
+   
       <UpdateModel />
     </div>
   );
