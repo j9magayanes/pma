@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import ModelFinder from "../apis/ModelFinder";
+import Header from "../components/Header";
 import { ModelsContext } from "../context/ModelsContext"
 import '../index.css'
 
@@ -26,6 +27,8 @@ const AddModel = () => {
     }
   };
   return (
+    <>
+    <Header/>
     <div className="mb-4">
       <form action="">
         <div className="form-row">
@@ -80,6 +83,7 @@ const AddModel = () => {
         </div>
       </form>
     </div>
+    </>
   );
 };
 
